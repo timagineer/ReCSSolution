@@ -1,3 +1,867 @@
-<body style="display:grid;place-items:center;min-height:100dvh">
-  <h1 style="font-family:ui-monospace,monospace;text-align:center;">index of {subdomain}.timagineer.com</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ReCSSolution: Poly-unit Viewport Ruler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400&family=Inria+Serif:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        @layer config, reset, base, layout, components, utilities;
+
+        @layer config {
+
+            :root {
+                color-scheme: dark light;
+                --color-gray-0: oklch(99.135% 0.00143 285.193);
+                --color-gray-0: oklch(99.135% 0.00143 285.193);
+                --color-gray-1: oklch(95.73% 0.00754 260.888);
+                --color-gray-1h: oklch(92.375% 0.01344 262.453);
+                --color-gray-2: oklch(86.74% 0.01883 258.43);
+                --color-gray-3: oklch(78.746% 0.02523 254.05);
+                --color-gray-4: oklch(69.994% 0.02845 251.812);
+                --color-gray-5: oklch(61.27% 0.03074 248.385);
+                --color-gray-6: oklch(52.429% 0.02353 243.799);
+                --color-gray-7: oklch(42.954% 0.0164 241.386);
+                --color-gray-8: oklch(32.915% 0.01212 243.284);
+                --color-gray-9: oklch(21.49% 0.00851 240.394);
+                --color-gray-10: oklch(21.49% 0.00851 240.394);
+                --color-gray-10h: oklch(26.893% 0.01272 243.409);
+                --color-gray-11: oklch(14.451% 0.00469 263.82);
+                --color-accent: oklch(67.377% 0.16914 251.919);
+
+                --bg-0-11: light-dark(var(--color-gray-0), var(--color-gray-11));
+                --bg-1-10: light-dark(var(--color-gray-1), var(--color-gray-10));
+                --bg-1h-10h: light-dark(var(--color-gray-1h), var(--color-gray-10h));
+                --fg-2-7: light-dark(var(--color-gray-2), var(--color-gray-7));
+                --fg-2-8: light-dark(var(--color-gray-2), var(--color-gray-8));
+                --fg-3-5: light-dark(var(--color-gray-3), var(--color-gray-5));
+                --fg-3-7: light-dark(var(--color-gray-3), var(--color-gray-7));
+                --fg-4-5: light-dark(var(--color-gray-4), var(--color-gray-5));
+                --fg-4-8: light-dark(var(--color-gray-4), var(--color-gray-8));
+                --fg-5-6: light-dark(var(--color-gray-5), var(--color-gray-6));
+                --fg-7-4: light-dark(var(--color-gray-7), var(--color-gray-4));
+                --fg-8-2: light-dark(var(--color-gray-8), var(--color-gray-2));
+                --fg-footer: light-dark(oklch(56% 0.02 248), oklch(57.5% 0.02 248));
+
+                --type-family-sans: "Inria Serif", system-ui, sans-serif;
+                --type-family-mono: "Azeret Mono", ui-monospace, monospace;
+                --type-scale-body: clamp(0.875rem, 0.8036rem + 0.3571vw, 1.125rem);
+                --type-scale-functional: clamp(0.75rem, 0.7143rem + 0.1786vw, 0.875rem);
+
+                --type-weight-responsive: 300;
+                --type-tracking-body-slight: 0.02rem;
+                --type-tracking-caps-loose: 0.175cap;
+
+                --space-1-2: clamp(0.25rem, 0.2143rem + 0.1786vw, 0.375rem);
+                --space-3: 0.375rem;
+                --space-4: 0.5rem;
+                --space-3-4: clamp(0.375rem, 0.3393rem + 0.1786vw, 0.5rem);
+                --space-3-5: clamp(0.375rem, 0.1964rem + 0.8929vw, 1rem);
+                --space-5-6: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem);
+
+                --corner: var(--space-4);
+                --ease-expo-out: cubic-bezier(.19, 1, .22, 1);
+                --layer-1: 1;
+                --layer-2: 2;
+                --layer-3: 3;
+                --stroke: 5px;
+                --arrowhead:
+                    /* Dark mode arrowhead */
+                    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%232f353a%22%20d%3D%22M7.82%2020.731a1%201%200%200%200%201.415%200l6.644-6.644a3%203%200%200%200%20.001-4.242L9.31%203.27a1%201%200%201%200-1.415%201.414l6.572%206.572a1%201%200%200%201%200%201.414l-6.646%206.647a1%201%200%200%200%200%201.414Z%22%2F%3E%3C%2Fsvg%3E");
+            }
+
+            @media (prefers-color-scheme: light) {
+                :root {
+                    --type-weight-responsive: 400;
+                    --arrowhead:
+                        /* Light mode arrowhead */
+                        url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23cdd5e1%22%20d%3D%22M7.82%2020.731a1%201%200%200%200%201.415%200l6.644-6.644a3%203%200%200%200%20.001-4.242L9.31%203.27a1%201%200%201%200-1.415%201.414l6.572%206.572a1%201%200%200%201%200%201.414l-6.646%206.647a1%201%200%200%200%200%201.414Z%22%2F%3E%3C%2Fsvg%3E");
+                }
+
+            }
+        }
+
+        @layer reset {
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                font-size: 100%;
+                -webkit-text-size-adjust: none;
+                text-size-adjust: none;
+                line-height: 1.5;
+                scrollbar-gutter: stable;
+            }
+
+            body {
+                min-block-size: 100dvh;
+                text-decoration-skip-ink: auto;
+                font-optical-sizing: auto;
+                font-kerning: normal;
+            }
+
+            input {
+                font: inherit;
+            }
+
+            label[for] {
+                cursor: pointer;
+                line-height: 1.125;
+            }
+
+            h1,
+            h2 {
+                font-variant-numeric: lining-nums;
+                line-height: 1.125;
+                overflow-wrap: break-word;
+                text-wrap: balance;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            :focus-visible {
+                outline-offset: 2px;
+            }
+        }
+
+        @layer base {
+
+            html {
+                accent-color: var(--color-accent);
+            }
+
+            :where(body, h1, h2, thead th) {
+                font-weight: var(--type-weight-responsive);
+            }
+
+            body {
+                background-color: var(--bg-0-11);
+                font-family: var(--type-family-mono);
+                font-size: var(--type-scale-body);
+                line-height: initial;
+                overflow: hidden;
+            }
+
+            :where(h1, h2, thead th, footer) {
+                font-family: var(--type-family-sans);
+            }
+
+            main {
+                z-index: var(--layer-1);
+            }
+
+            section {
+                color: var(--fg-8-2);
+                background-color: var(--bg-1-10);
+                border: var(--stroke) solid var(--fg-2-8);
+                border-radius: var(--corner);
+                padding-block: var(--space-3-4);
+                padding-inline: var(--space-5-6);
+                z-index: var(--layer-2);
+            }
+
+            :where(h1, h2) {
+                font-size: 1.1em;
+            }
+
+            table {
+                table-layout: auto;
+                position: relative;
+                z-index: var(--layer-3);
+            }
+
+            thead {
+                border-block-end: 1.5px solid var(--fg-4-8);
+                font-size: .8em;
+                letter-spacing: var(--type-tracking-caps-loose);
+                text-align: left;
+                text-transform: uppercase;
+                vertical-align: bottom;
+            }
+
+            :where(h1, h2, thead th) {
+                color: var(--fg-7-4);
+            }
+
+            label {
+                text-wrap: nowrap;
+                margin-inline-start: -20px;
+            }
+
+            input {
+                margin-inline-end: var(--space-3);
+                margin-inline-end: -.5ch;
+                vertical-align: middle;
+            }
+
+            :where(td, th) {
+                border-bottom: 1px solid var(--fg-4-8);
+                font-variant-numeric: tabular-nums lining-nums slashed-zero;
+                padding-block: var(--space-3);
+                padding-inline: var(--space-1-2);
+                vertical-align: baseline;
+                border-radius: var(--corner);
+            }
+
+            /* Terminal rows no border */
+            :where(thead td, tbody tr:last-of-type > *) {
+                border-bottom: none;
+            }
+
+            /* Fixed width for unit column to prevent layout shift */
+            table td:nth-child(4),
+            table th:nth-child(4) {
+                min-width: 4ch;
+                max-width: 4ch;
+            }
+
+            /* Row hover effect - No-JS backup, works alongside follower */
+            tbody tr:not(:first-child) {
+                position: relative;
+                cursor: pointer;
+                color: var(--fg-7-4);
+                transition: color 180ms ease;
+            }
+
+            tbody tr:not(:first-child) .zed {
+                color: var(--fg-5-6);
+            }
+
+            tbody tr:not(:first-child).active {
+                color: var(--fg-8-2);
+            }
+
+            tbody tr:not(:first-child).active .zed {
+                color: var(--fg-7-4);
+            }
+
+            /* × sign and label/input cell */
+            tbody tr td:nth-child(2) {
+                color: var(--fg-7-4);
+            }
+
+            /* unit header, unit cells */
+            :where(thead tr th:last-of-type, tbody tr td:last-of-type) {
+                text-align: right;
+            }
+
+            .zed {
+                color: var(--fg-5-6);
+            }
+
+            footer {
+                position: absolute;
+                bottom: var(--space-3-5);
+                width: 100vw;
+                z-index: var(--layer-1);
+                font-size: var(--type-scale-functional);
+                font-size: .9em;
+            }
+
+            footer span {
+                color: var(--fg-footer);
+                background-color: var(--bg-0-11);
+                letter-spacing: var(--type-tracking-body-slight);
+            }
+
+            footer a {
+                color: currentColor;
+                text-underline-offset: .3ex;
+            }
+        }
+
+        @layer layout {
+
+            .center {
+                box-sizing: content-box;
+                margin-inline: auto;
+                max-inline-size: var(--measure, 22ch);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cover {
+                display: flex;
+                flex-direction: column;
+                min-block-size: 100vh;
+                padding: var(--space-3);
+            }
+
+            .cover>* {
+                margin-block: 0;
+            }
+
+            .cover> :first-child:not(main) {
+                margin-block-start: 0;
+            }
+
+            .cover> :last-child:not(main) {
+                margin-block-end: 0;
+            }
+
+            .cover>main {
+                margin-block: auto;
+            }
+
+            .follower-bounds {
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                /* Hide follower when it goes outside table bounds */
+                z-index: 0;
+            }
+
+            .stack-x {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: var(--space-4);
+                justify-content: space-around;
+                align-items: center;
+            }
+        }
+
+        @layer components {
+
+            .follower {
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: var(--bg-1h-10h);
+                height: calc((var(--space-3) * 2) + 1lh + 1px);
+                opacity: 0;
+                transform: translateY(var(--follower-center, 50%));
+                transition: transform 360ms var(--ease-expo-out), opacity 180ms ease;
+                z-index: var(--layer-1);
+            }
+
+            .follower.active {
+                opacity: 1;
+            }
+
+            /* Axes */
+            .axis {
+                position: absolute;
+                background-color: var(--fg-2-8);
+                background-position: center;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+            }
+
+            .axis::before,
+            .axis::after {
+                content: "";
+                --size: 65px;
+                width: var(--size);
+                height: var(--size);
+                position: absolute;
+                --axis-offset: calc(-1 * var(--size) / 2 + var(--stroke) / 2);
+                --edge-offset: calc(-1 * var(--size) / 3);
+                background-image: var(--arrowhead);
+                background-position: center;
+                background-size: cover;
+            }
+
+            .x.axis {
+                width: calc(100% - 2 * var(--stroke));
+                height: var(--stroke);
+            }
+
+            .y.axis {
+                height: calc(100% - 2 * var(--stroke));
+                width: var(--stroke);
+            }
+
+            .x.axis::before {
+                top: var(--axis-offset);
+                left: var(--edge-offset);
+                rotate: 180deg;
+            }
+
+            .x.axis::after {
+                top: var(--axis-offset);
+                right: var(--edge-offset);
+            }
+
+            .y.axis::before {
+                left: var(--axis-offset);
+                top: var(--edge-offset);
+                rotate: -90deg;
+            }
+
+            .y.axis::after {
+                left: var(--axis-offset);
+                bottom: var(--edge-offset);
+                rotate: 90deg;
+            }
+        }
+
+        @layer utilities {
+
+            .vh {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+    <script defer src=https://assets.timagineer.com/src/date.js></script>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#090a0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fcfcfd" media="(prefers-color-scheme: light)" />
+    <meta name="author" content="Timothy Martens">
+    <meta name="description" content="ReCSSolution: Poly-unit Viewport Ruler">
+</head>
+
+<body class="cover">
+
+    <main>
+        <section class="center">
+            <h1 class="vh">ReCSSolution: Poly-unit Viewport Ruler</h1>
+            <div class="follower-bounds">
+                <div class="follower"></div>
+                <table>
+                    <caption class="vh">
+                        CSS Relative & Absolute Length Units
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Width</th>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">Height</th>
+                            <th scope="col">Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <h2>Relative units</h2>
+                            </td>
+                            <td>
+                                <label for="root-toggle">
+                                    <input id="root-toggle" type="checkbox">
+                                    root
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="cap-width">000.00</td>
+                            <td>×</td>
+                            <td id="cap-height">000.00</td>
+                            <td id="cap-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#cap">cap</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="ch-width">000.00</td>
+                            <td>×</td>
+                            <td id="ch-height">000.00</td>
+                            <td id="ch-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#ch">ch</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="em-width">000.00</td>
+                            <td>×</td>
+                            <td id="em-height">000.00</td>
+                            <td id="em-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#em">em</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="ex-width">000.00</td>
+                            <td>×</td>
+                            <td id="ex-height">000.00</td>
+                            <td id="ex-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#ex">ex</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="ic-width">000.00</td>
+                            <td>×</td>
+                            <td id="ic-height">000.00</td>
+                            <td id="ic-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#ic">ic</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="lh-width">000.00</td>
+                            <td>×</td>
+                            <td id="lh-height">000.00</td>
+                            <td id="lh-unit">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#lh">lh</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <h2>Absolute units</h2>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td id="cm-width">000.00</td>
+                            <td>×</td>
+                            <td id="cm-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#cm">cm</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="in-width">000.00</td>
+                            <td>×</td>
+                            <td id="in-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#in">in</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="mm-width">000.00</td>
+                            <td>×</td>
+                            <td id="mm-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#mm">mm</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="pc-width">000.00</td>
+                            <td>×</td>
+                            <td id="pc-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#pc">pc</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="pt-width">000.00</td>
+                            <td>×</td>
+                            <td id="pt-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#pt">pt</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="px-width">000.00</td>
+                            <td>×</td>
+                            <td id="px-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#px">px</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="q-width">000.00</td>
+                            <td>×</td>
+                            <td id="q-height">000.00</td>
+                            <td>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#q">Q</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="stack-x">
+        <span><span class="sc">R</span>e<span class="sc">CSS</span>olution</span>
+        <span>&copy;&apos;<time></time> <a href="https://timagineer.com">Timagineer</a></span>
+    </footer>
+
+    <div class="axis x"></div>
+    <div class="axis y"></div>
+
+    <script>
+        class UnitMeasurementDisplay {
+            constructor() {
+                this.DPI_STANDARD = 96,
+                    this.relativeUnits = ["cap", "ch", "em", "ex", "ic", "lh"],
+                    this.absoluteUnits = ["px", "cm", "mm", "q", "in", "pc", "pt"],
+                    this.unitElements = {},
+                    this.cachedMeasurements = {},
+                    this.rootToggle = document.getElementById("root-toggle"),
+                    this.measuringElement = this.createMeasuringElement(),
+                    this.cacheElements(),
+                    this.resizeTimer = null,
+                    this.debounceDelay = 100,
+                    this.devicePixelRatio = window.devicePixelRatio || 1,
+                    this.supportedFeatures = this.detectFeatures(),
+                    this.lastWidth = 0,
+                    this.lastHeight = 0,
+                    this.followerActivated = false,
+                    this.updateSize = this.updateSize.bind(this),
+                    this.debouncedResize = this.debouncedResize.bind(this),
+                    this.toggleRootRelativeUnits = this.toggleRootRelativeUnits.bind(this),
+                    this.init()
+            }
+            init() {
+                try {
+                    window.addEventListener("resize", this.debouncedResize, {
+                        passive: !0
+                    }),
+                        this.rootToggle.addEventListener("change", this.toggleRootRelativeUnits),
+                        window.matchMedia && window.matchMedia("(resolution)").addEventListener("change", this.debouncedResize, {
+                            passive: !0
+                        }),
+                        this.precalculateUnitFactors(),
+                        this.updateSize(),
+                        this.initFollower(),
+                        console.log("ReCSSolution: Initialized successfully")
+                } catch (e) {
+                    console.error("ReCSSolution: Initialization failed", e),
+                        this.handleError(e)
+                }
+            }
+            initFollower() {
+                const follower = document.querySelector('.follower');
+                const table = document.querySelector('table');
+                const tableHeight = table.getBoundingClientRect().height;
+                const followerHeight = follower.getBoundingClientRect().height;
+                follower.style.setProperty('--follower-center', `${(tableHeight - followerHeight) / 2}px`);
+
+                // Add hover listeners to hoverable rows only
+                this.activeRow = null;
+                document.querySelectorAll('tbody tr:not(:first-child)').forEach(row => {
+                    row.addEventListener('mouseenter', e => {
+                        const rowRect = e.currentTarget.getBoundingClientRect();
+                        const tableRect = table.getBoundingClientRect();
+                        const relativeTop = rowRect.top - tableRect.top;
+
+                        follower.style.transform = `translateY(${relativeTop}px)`;
+                        follower.classList.add('active');
+                        if (this.activeRow) this.activeRow.classList.remove('active');
+                        e.currentTarget.classList.add('active');
+                        this.activeRow = e.currentTarget;
+                        this.followerActivated = true;
+                    });
+                });
+
+                // Only hide follower if it hasn't been activated yet
+                table.addEventListener('mouseleave', () => {
+                    if (!this.followerActivated) {
+                        follower.classList.remove('active');
+                    }
+                });
+            }
+            cacheElements() {
+                [...this.relativeUnits, ...this.absoluteUnits].forEach((e => {
+                    this.unitElements[`${e}-width`] = document.getElementById(`${e}-width`),
+                        this.unitElements[`${e}-height`] = document.getElementById(`${e}-height`),
+                        this.unitElements[`${e}-unit`] = document.getElementById(`${e}-unit`)
+                }))
+            }
+            createMeasuringElement() {
+                const e = document.createElement("div");
+                return e.style.cssText = "visibility:hidden;position:absolute;font-family:monospace;pointer-events:none;left:-9999px;", e.setAttribute("aria-hidden", "true"), document.body.appendChild(e), e
+            }
+            detectFeatures() {
+                return {
+                    resizeObserver: "undefined" != typeof ResizeObserver,
+                    devicePixelRatio: void 0 !== window.devicePixelRatio,
+                    supportsCap: this.testUnitSupport("cap"),
+                    supportsIc: this.testUnitSupport("ic"),
+                    supportsLh: this.testUnitSupport("lh")
+                }
+            }
+            testUnitSupport(e) {
+                try {
+                    return this.measuringElement.style.width = `1${e}`, this.measuringElement.getBoundingClientRect().width > 0
+                } catch (e) {
+                    return !1
+                } finally {
+                    this.measuringElement.style.width = ""
+                }
+            }
+            precalculateUnitFactors() {
+                this.cachedMeasurements.regular = this.getUnitMeasurements(!1),
+                    this.cachedMeasurements.root = this.getUnitMeasurements(!0)
+            }
+            handleError(e) {
+                console.error("ReCSSolution Error:", e)
+            }
+            debouncedResize() {
+                this.resizeTimer && cancelAnimationFrame(this.resizeTimer),
+                    this.resizeTimer = requestAnimationFrame((() => {
+                        const e = window.devicePixelRatio || 1;
+                        e !== this.devicePixelRatio && (this.devicePixelRatio = e, this.precalculateUnitFactors()),
+                            this.updateSize()
+                    }))
+            }
+            updateSize() {
+                try {
+                    const e = window.innerWidth,
+                        t = window.innerHeight;
+                    if (e === this.lastWidth && t === this.lastHeight)
+                        return;
+                    this.lastWidth = e,
+                        this.lastHeight = t;
+                    const i = this.rootToggle.checked ? this.cachedMeasurements.root : this.cachedMeasurements.regular;
+                    this.batchUpdateDisplay(i, e, t)
+                } catch (e) {
+                    this.handleError(e)
+                }
+            }
+            toggleRootRelativeUnits() {
+                try {
+                    const e = this.rootToggle.checked;
+                    this.relativeUnits.forEach((t => {
+                        const i = this.unitElements[`${t}-unit`];
+                        if (i) {
+                            const s = e ? "r" : "";
+                            i.innerHTML = `<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#${t}">${s}${t}</a>`
+                        }
+                    })),
+                        this.updateSize()
+                } catch (e) {
+                    this.handleError(e)
+                }
+            }
+            getUnitMeasurements(e = !1) {
+                const t = window.getComputedStyle(document.documentElement),
+                    i = parseFloat(t.fontSize);
+                this.measuringElement.style.fontSize = e ? i + "px" : "";
+                const s = this.devicePixelRatio;
+                return {
+                    chWidth: this.measureDimension(this.measuringElement, "1ch", "width"),
+                    emWidth: this.measureDimension(this.measuringElement, "1em", "width"),
+                    exHeight: this.measureDimension(this.measuringElement, "1ex", "height"),
+                    capHeight: this.supportedFeatures.supportsCap ? this.measureDimension(this.measuringElement, "1cap", "height") : this.measureDimension(this.measuringElement, "0.75em", "height"),
+                    icWidth: this.supportedFeatures.supportsIc ? this.measureDimension(this.measuringElement, "1ic", "width") : this.measureDimension(this.measuringElement, "1em", "width"),
+                    lhHeight: this.supportedFeatures.supportsLh ? this.measureDimension(this.measuringElement, "1lh", "height") : this.measureDimension(this.measuringElement, "1.2em", "height"),
+                    rootFontSize: i,
+                    pxPerIn: this.DPI_STANDARD * s,
+                    pxPerCm: this.DPI_STANDARD / 2.54 * s,
+                    pxPerMm: this.DPI_STANDARD / 25.4 * s,
+                    pxPerQ: this.DPI_STANDARD / 101.6 * s,
+                    pxPerPt: this.DPI_STANDARD / 72 * s,
+                    pxPerPc: this.DPI_STANDARD / 6 * s
+                }
+            }
+            measureDimension(e, t, i) {
+                try {
+                    e.style[i] = t;
+                    const s = e.getBoundingClientRect()[i];
+                    return e.style[i] = "", s
+                } catch (e) {
+                    return this.handleError(e), 0
+                }
+            }
+            formatNumber(e) {
+                try {
+                    const t = e.toFixed(2).split(".");
+                    let i = "";
+                    for (let e = t[0].length; e < 4; e++)
+                        i += "0";
+                    return i.length > 0 ? `<span class="zed">${i}</span>${t[0].trim()}${t[1] ? "." + t[1] : ""}` : t[0] + "." + t[1]
+                } catch (e) {
+                    return this.handleError(e), "000.00"
+                }
+            }
+            batchUpdateDisplay(e, t, i) {
+                requestAnimationFrame((() => {
+                    this.relativeUnits.forEach((s => {
+                        let n;
+                        switch (s) {
+                            case "ch":
+                                n = e.chWidth;
+                                break;
+                            case "em":
+                                n = e.emWidth;
+                                break;
+                            case "ex":
+                                n = e.exHeight;
+                                break;
+                            case "cap":
+                                n = e.capHeight;
+                                break;
+                            case "ic":
+                                n = e.icWidth;
+                                break;
+                            case "lh":
+                                n = e.lhHeight
+                        }
+                        n > 0 && (this.updateElementInnerHTML(`${s}-width`, this.formatNumber(t / n)), this.updateElementInnerHTML(`${s}-height`, this.formatNumber(i / n)))
+                    })),
+                        this.updateElementInnerHTML("px-width", this.formatNumber(t)),
+                        this.updateElementInnerHTML("px-height", this.formatNumber(i)),
+                        this.updateElementInnerHTML("cm-width", this.formatNumber(t / e.pxPerCm)),
+                        this.updateElementInnerHTML("cm-height", this.formatNumber(i / e.pxPerCm)),
+                        this.updateElementInnerHTML("mm-width", this.formatNumber(t / e.pxPerMm)),
+                        this.updateElementInnerHTML("mm-height", this.formatNumber(i / e.pxPerMm)),
+                        this.updateElementInnerHTML("q-width", this.formatNumber(t / e.pxPerQ)),
+                        this.updateElementInnerHTML("q-height", this.formatNumber(i / e.pxPerQ)),
+                        this.updateElementInnerHTML("in-width", this.formatNumber(t / e.pxPerIn)),
+                        this.updateElementInnerHTML("in-height", this.formatNumber(i / e.pxPerIn)),
+                        this.updateElementInnerHTML("pc-width", this.formatNumber(t / e.pxPerPc)),
+                        this.updateElementInnerHTML("pc-height", this.formatNumber(i / e.pxPerPc)),
+                        this.updateElementInnerHTML("pt-width", this.formatNumber(t / e.pxPerPt)),
+                        this.updateElementInnerHTML("pt-height", this.formatNumber(i / e.pxPerPt))
+                }))
+            }
+            updateElementInnerHTML(e, t) {
+                const i = this.unitElements[e];
+                i && (i.innerHTML = t)
+            }
+            cleanup() {
+                try {
+                    window.removeEventListener("resize", this.debouncedResize),
+                        this.rootToggle.removeEventListener("change", this.toggleRootRelativeUnits),
+                        window.matchMedia && window.matchMedia("(resolution)").removeEventListener("change", this.debouncedResize),
+                        this.resizeTimer && (cancelAnimationFrame(this.resizeTimer), this.resizeTimer = null),
+                        this.measuringElement && this.measuringElement.parentNode && this.measuringElement.parentNode.removeChild(this.measuringElement),
+                        console.log("ReCSSolution: Cleanup completed")
+                } catch (e) {
+                    console.error("ReCSSolution: Cleanup error", e)
+                }
+            }
+        }
+        document.addEventListener("DOMContentLoaded", (() => {
+            const e = new UnitMeasurementDisplay;
+            window.recssolution = e,
+                window.addEventListener("beforeunload", (() => {
+                    window.recssolution && window.recssolution.cleanup()
+                }))
+        }));
+    </script>
 </body>
+
+</html>
